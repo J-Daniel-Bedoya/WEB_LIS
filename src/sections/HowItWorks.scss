@@ -1,0 +1,81 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.how-it-works {
+  &__grid {
+    display: grid;
+    gap: $space-8;
+    max-width: 900px;
+    margin-inline: auto;
+
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-6;
+    }
+  }
+
+  &__step {
+    text-align: center;
+    position: relative;
+    padding: $space-8 $space-4;
+  }
+
+  &__step-number {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-blue;
+    margin-bottom: $space-4;
+    letter-spacing: $letter-spacing-wider;
+  }
+
+  &__step-icon {
+    width: 64px;
+    height: 64px;
+    @include flex-center;
+    background: $color-white;
+    color: $color-blue;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-md;
+    margin: 0 auto $space-5;
+  }
+
+  &__step-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+    margin-bottom: $space-2;
+  }
+
+  &__step-description {
+    font-size: $font-size-sm;
+    color: $color-gray-400;
+    line-height: $line-height-relaxed;
+  }
+
+  &__connector {
+    display: none;
+
+    @include md {
+      display: block;
+      position: absolute;
+      top: calc($space-8 + 32px);
+      right: -$space-3;
+      width: $space-6;
+      height: 2px;
+      background: $color-gray-200;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -3px;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid $color-gray-200;
+        border-top: 2px solid $color-gray-200;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

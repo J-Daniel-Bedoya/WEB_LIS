@@ -1,0 +1,184 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.loc-selector {
+  margin-bottom: $space-10;
+
+  // ─── Open state (no selection) ───
+  &--open {
+    background: $gradient-card;
+    border: $border-light;
+    border-radius: $radius-xl;
+    padding: $space-8 $space-6;
+    text-align: center;
+
+    @include md {
+      padding: $space-10 $space-8;
+    }
+  }
+
+  // ─── Compact state (with selection) ───
+  &--compact {
+    background: rgba($color-blue, 0.06);
+    border: 1px solid rgba($color-blue, 0.12);
+    border-radius: $radius-lg;
+    padding: $space-4 $space-5;
+  }
+
+  // ─── Elements ───
+  &__prompt {
+    margin-bottom: $space-6;
+  }
+
+  &__pin {
+    color: $color-orange;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-slate-900;
+    margin-top: $space-3;
+
+    @include md {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__hint {
+    font-size: $font-size-base;
+    color: $color-slate-500;
+    margin-top: $space-2;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    max-width: 460px;
+    margin-inline: auto;
+
+    @include sm {
+      flex-direction: row;
+    }
+  }
+
+  &__select-wrap {
+    position: relative;
+    flex: 1;
+  }
+
+  &__select {
+    width: 100%;
+    appearance: none;
+    background: $color-white;
+    border: $border-medium;
+    border-radius: $radius-md;
+    padding: $space-3 $space-10 $space-3 $space-4;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    color: $color-slate-900;
+    cursor: pointer;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $color-blue;
+      box-shadow: 0 0 0 3px rgba($color-blue, 0.1);
+    }
+  }
+
+  &__chevron {
+    position: absolute;
+    right: $space-3;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-slate-400;
+    pointer-events: none;
+  }
+
+  &__detect {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-5;
+    background: $color-blue;
+    color: $color-white;
+    border: none;
+    border-radius: $radius-md;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: background $transition-fast;
+    white-space: nowrap;
+
+    &:hover:not(:disabled) {
+      background: $color-blue-strong;
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+  }
+
+  &__spinner {
+    animation: loc-spin 1s linear infinite;
+  }
+
+  &__error {
+    margin-top: $space-3;
+    font-size: $font-size-sm;
+    color: $color-coral;
+  }
+
+  // ─── Compact elements ───
+  &__selected {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    font-size: $font-size-md;
+    color: $color-slate-700;
+
+    strong {
+      color: $color-slate-900;
+    }
+  }
+
+  &__parent {
+    color: $color-slate-400;
+  }
+
+  &__change {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    margin-left: auto;
+    padding: $space-1 $space-3;
+    background: transparent;
+    border: $border-light;
+    border-radius: $radius-full;
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-slate-500;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $color-ice;
+      color: $color-slate-700;
+    }
+  }
+}
+
+@keyframes loc-spin {
+  to { transform: rotate(360deg); }
+}

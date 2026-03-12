@@ -1,0 +1,59 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.benefits {
+  &__grid {
+    display: grid;
+    gap: $space-6;
+
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    padding: $space-8;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($color-blue-deep, 0.1);
+    background: $color-white;
+    transition: border-color $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      border-color: rgba($color-blue, 0.2);
+      box-shadow: 0 8px 24px rgba(10, 33, 74, 0.06);
+
+      .benefits__icon {
+        background: $color-blue;
+        color: $color-white;
+      }
+    }
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    @include flex-center;
+    background: rgba($color-blue, 0.08);
+    color: $color-blue;
+    border-radius: $radius-sm;
+    margin-bottom: $space-5;
+    transition: all $transition-base;
+  }
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+    margin-bottom: $space-2;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    color: $color-gray-500;
+  }
+}

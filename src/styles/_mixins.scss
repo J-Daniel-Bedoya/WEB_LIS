@@ -1,0 +1,179 @@
+// ============================================
+// MIXINS — LIS ISP
+// ============================================
+
+@use 'variables' as *;
+
+// ─── RESPONSIVE ───────────────────────────
+@mixin sm { @media (min-width: $bp-sm) { @content; } }
+@mixin md { @media (min-width: $bp-md) { @content; } }
+@mixin lg { @media (min-width: $bp-lg) { @content; } }
+@mixin xl { @media (min-width: $bp-xl) { @content; } }
+@mixin xxl { @media (min-width: $bp-2xl) { @content; } }
+
+@mixin below-sm { @media (max-width: #{$bp-sm - 1px}) { @content; } }
+@mixin below-md { @media (max-width: #{$bp-md - 1px}) { @content; } }
+@mixin below-lg { @media (max-width: #{$bp-lg - 1px}) { @content; } }
+
+// ─── LAYOUT ───────────────────────────────
+@mixin container($max: $container-max) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $space-5;
+
+  @include md { padding-inline: $space-8; }
+  @include xl { padding-inline: $space-10; }
+}
+
+@mixin section-padding {
+  padding-block: $space-16;
+  @include md { padding-block: $space-20; }
+  @include lg { padding-block: $space-24; }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin grid($cols: 1, $gap: $space-6) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// ─── TYPOGRAPHY ───────────────────────────
+@mixin heading-1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-gray-900;
+
+  @include md { font-size: $font-size-4xl; }
+  @include lg { font-size: $font-size-5xl; }
+}
+
+@mixin heading-2 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-gray-900;
+
+  @include md { font-size: $font-size-3xl; }
+  @include lg { font-size: $font-size-4xl; }
+}
+
+@mixin heading-3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: $color-gray-900;
+
+  @include md { font-size: $font-size-2xl; }
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-gray-500;
+
+  @include md { font-size: $font-size-md; }
+}
+
+@mixin section-label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $color-blue;
+}
+
+// ─── COMPONENTS ───────────────────────────
+@mixin card {
+  background: $color-white;
+  border-radius: $radius-lg;
+  border: $border-light;
+  box-shadow: $shadow-card;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin card-flat {
+  background: $color-white;
+  border-radius: $radius-lg;
+  border: $border-light;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+// ─── UTILITIES ────────────────────────────
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@mixin focus-ring {
+  outline: 2px solid $color-blue;
+  outline-offset: 2px;
+}

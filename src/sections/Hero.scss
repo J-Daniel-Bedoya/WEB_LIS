@@ -1,0 +1,266 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  background: linear-gradient(180deg, rgba($color-blue-deep, 0.03) 0%, $color-white 18%, $color-white 100%);
+  padding-top: calc($space-24 + $space-6);
+  overflow: hidden;
+
+  @include md {
+    padding-top: calc($space-24 + $space-8);
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba($color-blue-deep, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($color-blue-deep, 0.04) 1px, transparent 1px);
+    background-size: 52px 52px;
+    opacity: 0.08;
+  }
+
+  &__bg-glow {
+    position: absolute;
+    top: -6%;
+    right: -2%;
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgba($color-orange, 0.12) 0%, transparent 72%);
+    border-radius: 50%;
+  }
+
+  &__bg-wash {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 180px;
+    background: linear-gradient(180deg, transparent 0%, rgba($color-blue-deep, 0.03) 100%);
+  }
+
+  &__container {
+    position: relative;
+    display: grid;
+    gap: $space-10;
+    padding-bottom: $space-12;
+
+    @include lg {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: $space-10;
+      align-items: center;
+      padding-bottom: $space-16;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__title {
+    color: $color-gray-900;
+    max-width: 12ch;
+  }
+
+  &__title-highlight {
+    color: $color-orange;
+  }
+
+  &__subtitle {
+    max-width: 64ch;
+    color: $color-gray-500;
+    font-size: $font-size-md;
+  }
+
+  &__list {
+    display: grid;
+    gap: $space-3;
+    margin: 0;
+
+    li {
+      position: relative;
+      padding-left: $space-5;
+      color: $color-gray-700;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 11px;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        border-radius: $radius-full;
+        background: $color-orange;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-6;
+    padding-top: $space-5;
+    border-top: 1px solid rgba($color-blue-deep, 0.1);
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+
+    svg {
+      color: $color-orange;
+    }
+  }
+
+  &__visual {
+    @include below-lg {
+      display: none;
+    }
+  }
+
+  &__card {
+    background: $color-white;
+    border: 1px solid rgba($color-blue-deep, 0.1);
+    border-radius: $radius-md;
+    padding: $space-8;
+    box-shadow: 0 12px 36px rgba(10, 33, 74, 0.08);
+  }
+
+  &__card-header {
+    @include flex-between;
+    margin-bottom: $space-6;
+    gap: $space-4;
+  }
+
+  &__card-badge {
+    color: $color-gray-900;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__card-popular {
+    background: rgba($color-orange, 0.12);
+    color: $color-orange;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    padding: $space-1 $space-3;
+    border-radius: $radius-sm;
+  }
+
+  &__card-speed {
+    display: flex;
+    align-items: flex-end;
+    gap: $space-3;
+    margin-bottom: $space-4;
+  }
+
+  &__card-number {
+    font-family: $font-mono;
+    font-size: 4rem;
+    line-height: 1;
+    color: $color-blue-deep;
+  }
+
+  &__card-unit {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $space-2;
+
+    span:first-child {
+      color: $color-orange;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+    }
+
+    span:last-child {
+      color: $color-gray-500;
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__card-price {
+    margin-bottom: $space-6;
+    padding-bottom: $space-5;
+    border-bottom: 1px solid rgba($color-blue-deep, 0.08);
+  }
+
+  &__card-price--meta {
+    display: block;
+  }
+
+  &__card-amount {
+    color: $color-gray-900;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__card-features {
+    display: grid;
+    gap: $space-3;
+    margin-bottom: $space-6;
+
+    li {
+      position: relative;
+      padding-left: $space-5;
+      color: $color-gray-700;
+      font-size: $font-size-sm;
+
+      &::before {
+        content: '\2713';
+        position: absolute;
+        left: 0;
+        color: $color-orange;
+      }
+    }
+  }
+
+  &__stats {
+    position: relative;
+    border-top: 1px solid rgba($color-blue-deep, 0.08);
+    background: $color-white;
+    padding: $space-8 0;
+  }
+
+  &__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-6;
+
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__stat {
+    text-align: center;
+  }
+
+  &__stat-value {
+    display: block;
+    color: $color-blue-deep;
+    font-family: $font-mono;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+  }
+
+  &__stat-label {
+    color: $color-gray-500;
+    font-size: $font-size-sm;
+  }
+}

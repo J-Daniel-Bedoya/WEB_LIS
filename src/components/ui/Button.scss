@@ -1,0 +1,83 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.btn {
+  @include button-base;
+
+  // Sizes
+  &--sm {
+    padding: $space-2 $space-4;
+    font-size: $font-size-sm;
+    border-radius: $radius-sm;
+  }
+
+  &--md {
+    padding: $space-3 $space-6;
+    font-size: $font-size-base;
+    border-radius: $radius-md;
+  }
+
+  &--lg {
+    padding: $space-4 $space-8;
+    font-size: $font-size-md;
+    border-radius: $radius-md;
+  }
+
+  // Variants
+  &--primary {
+    background: $color-orange;
+    color: $color-white;
+    box-shadow: 0 14px 28px rgba($color-orange, 0.22);
+
+    &:hover {
+      background: color.adjust($color-orange, $lightness: -8%);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba($color-orange, 0.28);
+    }
+
+    &:active { transform: translateY(0); }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $color-white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-blue;
+    border: 2px solid rgba($color-blue, 0.22);
+
+    &:hover {
+      border-color: $color-blue;
+      background: rgba($color-blue, 0.06);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-gray-500;
+
+    &:hover {
+      background: $color-gray-50;
+      color: $color-gray-900;
+    }
+  }
+
+  &--whatsapp {
+    background: #25D366;
+    color: $color-white;
+
+    &:hover {
+      background: color.adjust(#25D366, $lightness: -8%);
+      transform: translateY(-1px);
+    }
+  }
+}

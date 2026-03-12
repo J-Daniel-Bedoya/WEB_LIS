@@ -1,0 +1,68 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.faq {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__item {
+    background: $color-white;
+    border: $border-light;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: all $transition-base;
+
+    &--open {
+      border-color: rgba($color-blue, 0.2);
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &__question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-5 $space-6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+    text-align: left;
+    transition: color $transition-fast;
+
+    &:hover { color: $color-blue; }
+
+    @include md { font-size: $font-size-md; }
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    color: $color-gray-300;
+    transition: transform $transition-base;
+
+    .faq__item--open & {
+      transform: rotate(180deg);
+      color: $color-blue;
+    }
+  }
+
+  &__answer {
+    overflow: hidden;
+
+    p {
+      padding: 0 $space-6 $space-6;
+      font-size: $font-size-sm;
+      line-height: $line-height-relaxed;
+      color: $color-gray-400;
+
+      @include md { font-size: $font-size-base; }
+    }
+  }
+}

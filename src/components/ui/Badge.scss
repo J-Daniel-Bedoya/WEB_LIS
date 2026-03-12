@@ -1,0 +1,44 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+  border-radius: $radius-full;
+  line-height: 1.4;
+
+  &--default {
+    background: rgba($color-blue, 0.1);
+    color: $color-blue;
+  }
+
+  &--success {
+    background: rgba($color-emerald, 0.1);
+    color: $color-emerald;
+  }
+
+  &--warning {
+    background: rgba($color-amber, 0.1);
+    color: color.adjust($color-amber, $lightness: -10%);
+  }
+
+  &--highlight {
+    background: $gradient-orange;
+    color: $color-white;
+  }
+
+  &--fiber {
+    background: rgba($color-orange, 0.12);
+    color: $color-orange;
+  }
+
+  &--radio {
+    background: rgba($color-blue, 0.14);
+    color: $color-blue-strong;
+  }
+}

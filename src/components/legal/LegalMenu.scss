@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.legal-menu {
+  padding: $space-4;
+  border: 1px solid rgba($color-blue-deep, 0.1);
+  border-radius: $radius-sm;
+  background: $color-white;
+
+  h2 {
+    font-size: $font-size-base;
+    margin-bottom: $space-3;
+  }
+
+  ul {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__link {
+    display: block;
+    padding: $space-3 $space-4;
+    border-left: 3px solid transparent;
+    border-radius: $radius-sm;
+    background: transparent;
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+
+    &:hover,
+    &.active {
+      border-color: rgba($color-blue, 0.12);
+      border-left-color: $color-orange;
+      background: rgba($color-blue, 0.03);
+    }
+
+    strong {
+      display: block;
+      margin-bottom: $space-1;
+      color: $color-gray-900;
+      font-size: $font-size-sm;
+    }
+
+    span {
+      display: block;
+      color: $color-gray-500;
+      font-size: $font-size-xs;
+      line-height: $line-height-normal;
+    }
+  }
+}

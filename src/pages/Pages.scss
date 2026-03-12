@@ -1,0 +1,208 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page-section {
+  padding: $space-10 0 $space-16;
+
+  @include md {
+    padding: $space-12 0 $space-20;
+  }
+}
+
+.page-shell {
+  display: grid;
+  gap: $space-6;
+
+  @include lg {
+    grid-template-columns: 248px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.page-content {
+  min-width: 0;
+}
+
+.page-summary {
+  display: grid;
+  gap: $space-4;
+  margin-bottom: $space-8;
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &__card {
+    padding: $space-5;
+    border: 1px solid rgba($color-blue-deep, 0.1);
+    border-top: 3px solid rgba($color-orange, 0.85);
+    border-radius: $radius-sm;
+    background: $color-white;
+
+    strong {
+      display: block;
+      margin-bottom: $space-2;
+      color: $color-gray-900;
+      font-size: $font-size-base;
+    }
+
+    p {
+      color: $color-gray-500;
+      font-size: $font-size-sm;
+    }
+
+    a {
+      display: inline-flex;
+      margin-top: $space-3;
+      color: $color-blue;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-6;
+}
+
+.page-grid {
+  display: grid;
+  gap: $space-4;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.page-card {
+  padding: $space-5;
+  border: 1px solid rgba($color-blue-deep, 0.1);
+  border-radius: $radius-sm;
+  background: $color-white;
+
+  h2,
+  h3 {
+    margin-bottom: $space-3;
+  }
+
+  p,
+  li {
+    color: $color-gray-500;
+    font-size: $font-size-sm;
+  }
+}
+
+.page-list {
+  display: grid;
+  gap: $space-3;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+  }
+}
+
+.page-form {
+  display: grid;
+  gap: $space-4;
+  padding: $space-6;
+  border: 1px solid rgba($color-blue-deep, 0.1);
+  border-radius: $radius-sm;
+  background: $color-white;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    &--full {
+      @include sm {
+        grid-column: 1 / -1;
+      }
+    }
+
+    label {
+      color: $color-gray-900;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: $space-3 $space-4;
+      border: 1px solid rgba($color-blue-deep, 0.14);
+      border-radius: $radius-sm;
+      background: $color-white;
+      color: $color-gray-900;
+
+      &:focus {
+        outline: none;
+        border-color: rgba($color-blue, 0.4);
+        box-shadow: 0 0 0 3px rgba($color-blue, 0.08);
+      }
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+
+    @include sm {
+      grid-column: 1 / -1;
+      width: auto;
+      justify-self: start;
+    }
+  }
+}
+
+.home-pathways {
+  background: $color-snow;
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include md {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    padding: $space-5;
+    border: 1px solid rgba($color-blue-deep, 0.1);
+    border-radius: $radius-sm;
+    background: $color-white;
+
+    h3 {
+      font-size: $font-size-lg;
+    }
+
+    p {
+      color: $color-gray-500;
+      font-size: $font-size-sm;
+    }
+
+    a {
+      color: $color-blue;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+  }
+}

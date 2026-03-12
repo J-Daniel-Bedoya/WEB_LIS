@@ -1,0 +1,270 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.plans {
+  background: $color-snow;
+
+  // ─── Plan grid ───
+  &__grid {
+    display: grid;
+    gap: $space-5;
+
+    &--1 {
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    &--2 {
+      @include lg {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    &--3 {
+      @include md {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @include xl {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    &--4 {
+      @include md {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @include xl {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  }
+
+  // ─── Plan card ───
+  &__card {
+    @include card-flat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: $space-6;
+
+    @include md {
+      padding: $space-8;
+    }
+
+    &--highlighted {
+      border-color: rgba($color-blue, 0.3);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &__card-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-bottom: $space-4;
+  }
+
+  &__card-speed {
+    display: flex;
+    align-items: flex-end;
+    gap: $space-2;
+    margin-bottom: $space-1;
+  }
+
+  &__card-speed-value {
+    font-family: $font-mono;
+    font-size: clamp(2.5rem, 7vw, 3.75rem);
+    line-height: 0.95;
+    color: $color-blue-deep;
+  }
+
+  &__card-speed-unit span {
+    display: block;
+    padding-bottom: $space-2;
+    color: $color-orange;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__card-context {
+    color: $color-slate-400;
+    font-size: $font-size-sm;
+    margin-bottom: $space-4;
+    line-height: $line-height-normal;
+  }
+
+  &__card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: $space-5;
+    padding-bottom: $space-5;
+    border-bottom: $border-light;
+  }
+
+  &__card-currency,
+  &__card-period {
+    color: $color-slate-400;
+    font-size: $font-size-sm;
+  }
+
+  &__card-amount {
+    font-family: $font-mono;
+    font-size: $font-size-2xl;
+    color: $color-slate-900;
+    font-weight: $font-weight-bold;
+  }
+
+  &__card-cta {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  // ─── Installation info ───
+  &__installation {
+    margin-top: $space-8;
+    padding: $space-5 $space-6;
+    background: $color-white;
+    border: $border-light;
+    border-radius: $radius-lg;
+
+    h4 {
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      color: $color-slate-900;
+      margin-bottom: $space-4;
+    }
+  }
+
+  &__installation-list {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__installation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-2 0;
+    font-size: $font-size-sm;
+    color: $color-slate-500;
+    border-bottom: 1px solid $color-ice;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__installation-price {
+    font-family: $font-mono;
+    font-weight: $font-weight-semibold;
+    color: $color-slate-700;
+  }
+
+  // ─── Comercial info ───
+  &__comercial {
+    margin-top: $space-5;
+    padding: $space-5 $space-6;
+    background: $color-white;
+    border: $border-light;
+    border-radius: $radius-lg;
+
+    h4 {
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      color: $color-slate-900;
+      margin-bottom: $space-2;
+    }
+  }
+
+  &__comercial-note {
+    font-size: $font-size-sm;
+    color: $color-slate-400;
+    margin-bottom: $space-4;
+  }
+
+  &__comercial-list {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__comercial-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-2 0;
+    font-size: $font-size-sm;
+    color: $color-slate-500;
+    border-bottom: 1px solid $color-ice;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__comercial-price {
+    font-family: $font-mono;
+    font-weight: $font-weight-semibold;
+    color: $color-slate-700;
+  }
+
+  // ─── No location summary view ───
+  &__no-location {
+    display: grid;
+    gap: $space-5;
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__summary-card {
+    @include card-flat;
+    padding: $space-8 $space-6;
+    text-align: center;
+    border-top: 3px solid transparent;
+
+    svg {
+      margin-bottom: $space-3;
+    }
+
+    h3 {
+      font-size: $font-size-lg;
+      color: $color-slate-900;
+      margin-bottom: $space-3;
+    }
+
+    p {
+      font-size: $font-size-md;
+      color: $color-slate-700;
+      margin-bottom: $space-2;
+
+      strong {
+        font-family: $font-mono;
+      }
+    }
+
+    span {
+      font-size: $font-size-sm;
+      color: $color-slate-400;
+    }
+
+    &--fiber {
+      border-top-color: $color-orange;
+      svg { color: $color-orange; }
+    }
+
+    &--radio {
+      border-top-color: $color-blue;
+      svg { color: $color-blue; }
+    }
+  }
+
+  // ─── Disclaimer ───
+  &__disclaimer {
+    margin-top: $space-6;
+    color: $color-slate-400;
+    font-size: $font-size-xs;
+    text-align: center;
+  }
+}

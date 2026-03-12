@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page-hero {
+  padding: $space-12 0 $space-8;
+  background: $color-white;
+  border-bottom: 1px solid rgba($color-blue-deep, 0.08);
+
+  @include md {
+    padding: $space-16 0 $space-10;
+  }
+
+  &__inner {
+    max-width: 780px;
+  }
+
+  &__eyebrow {
+    margin-bottom: $space-2;
+    color: $color-gray-500;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+  }
+
+  h1 {
+    margin-bottom: $space-3;
+  }
+
+  &__description {
+    max-width: 64ch;
+    color: $color-gray-500;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-top: $space-5;
+  }
+}

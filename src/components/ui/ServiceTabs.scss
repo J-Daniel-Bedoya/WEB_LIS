@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.service-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  justify-content: center;
+  margin-bottom: $space-8;
+
+  &__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-5;
+    background: $color-white;
+    border: $border-light;
+    border-radius: $radius-full;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-slate-500;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover:not(&--active) {
+      background: $color-ice;
+      color: $color-slate-700;
+    }
+
+    // ─── Active states by service color ───
+    &--active.service-tabs__tab--fiber {
+      background: rgba($color-orange, 0.1);
+      border-color: rgba($color-orange, 0.3);
+      color: $color-orange;
+    }
+
+    &--active.service-tabs__tab--radio {
+      background: rgba($color-blue, 0.1);
+      border-color: rgba($color-blue, 0.3);
+      color: $color-blue;
+    }
+  }
+}

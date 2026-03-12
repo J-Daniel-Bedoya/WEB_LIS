@@ -1,0 +1,63 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.services {
+  &__grid {
+    display: grid;
+    gap: $space-6;
+
+    @include sm { grid-template-columns: repeat(2, 1fr); }
+    @include xl { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &__card {
+    @include card;
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__card-icon {
+    width: 56px;
+    height: 56px;
+    @include flex-center;
+    background: $gradient-blue;
+    color: $color-white;
+    border-radius: $radius-lg;
+    margin-bottom: $space-5;
+  }
+
+  &__card-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+    margin-bottom: $space-3;
+  }
+
+  &__card-description {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    color: $color-gray-400;
+    margin-bottom: $space-5;
+    flex: 1;
+  }
+
+  &__card-features {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding-top: $space-5;
+    border-top: $border-light;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      font-size: $font-size-sm;
+      color: $color-gray-500;
+      font-weight: $font-weight-medium;
+
+      svg { color: $color-blue; flex-shrink: 0; }
+    }
+  }
+}

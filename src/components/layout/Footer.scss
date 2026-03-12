@@ -1,0 +1,111 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: linear-gradient(180deg, #07162b 0%, #0b2348 100%);
+  color: $color-gray-300;
+  padding-top: $space-16;
+
+  &__grid {
+    display: grid;
+    gap: $space-10;
+    padding-bottom: $space-12;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    @include md {
+      grid-template-columns: 1.45fr 1fr 1fr 1fr;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-5;
+
+    strong {
+      display: block;
+      color: $color-white;
+      font-size: $font-size-lg;
+    }
+
+    span {
+      display: block;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__logo-image {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &__description {
+    color: rgba(255, 255, 255, 0.74);
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-6;
+  }
+
+  &__contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    a,
+    div {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: $font-size-sm;
+    }
+
+    a:hover {
+      color: $color-orange-soft;
+    }
+  }
+
+  &__links-group {
+    h4 {
+      color: $color-white;
+      font-size: $font-size-sm;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-wide;
+      margin-bottom: $space-5;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: $space-2;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: $font-size-sm;
+
+      &:hover {
+        color: $color-orange-soft;
+      }
+    }
+  }
+
+  &__bottom {
+    padding: $space-6 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: $font-size-xs;
+
+    p + p {
+      margin-top: $space-1;
+    }
+  }
+}

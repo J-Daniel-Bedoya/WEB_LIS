@@ -1,0 +1,287 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.about {
+  background: linear-gradient(180deg, $color-white 0%, rgba($color-blue, 0.02) 100%);
+
+  &__intro,
+  &__principles,
+  &__offices,
+  &__values,
+  &__timeline-wrap {
+    margin-bottom: $space-10;
+  }
+
+  &__intro {
+    display: grid;
+    gap: $space-6;
+
+    @include lg {
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: start;
+    }
+  }
+
+  &__story,
+  &__panel,
+  &__principle,
+  &__pillar,
+  &__timeline-item,
+  &__office,
+  &__value {
+    @include card-flat;
+  }
+
+  &__story,
+  &__panel,
+  &__principle,
+  &__office,
+  &__value {
+    background: $color-white;
+    border: 1px solid rgba($color-blue-deep, 0.08);
+    box-shadow: $shadow-card;
+  }
+
+  &__story {
+    padding: $space-8;
+
+    p + p {
+      margin-top: $space-4;
+    }
+
+    p {
+      color: $color-slate-500;
+      max-width: 68ch;
+    }
+  }
+
+  &__eyebrow,
+  &__panel-label,
+  &__principle-label {
+    display: inline-block;
+    color: $color-orange;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+  }
+
+  &__eyebrow {
+    margin-bottom: $space-3;
+  }
+
+  &__panel {
+    padding: $space-8;
+
+    strong {
+      display: block;
+      margin: $space-2 0 $space-4;
+      color: $color-blue-deep;
+      font-size: $font-size-2xl;
+      line-height: $line-height-tight;
+    }
+
+    p {
+      color: $color-slate-500;
+    }
+  }
+
+  &__mini-stats {
+    display: grid;
+    gap: $space-4;
+    margin-top: $space-6;
+    padding-top: $space-5;
+    border-top: 1px solid rgba($color-blue-deep, 0.08);
+
+    @include sm {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    span {
+      display: block;
+      margin-bottom: $space-2;
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+    }
+
+    strong {
+      margin: 0;
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__principles {
+    display: grid;
+    gap: $space-6;
+
+    @include lg {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__principle {
+    padding: $space-8;
+
+    h3 {
+      margin: $space-3 0;
+      font-size: $font-size-xl;
+      line-height: $line-height-tight;
+    }
+
+    p {
+      color: $color-slate-500;
+    }
+  }
+
+  &__principle-icon,
+  &__office-icon,
+  &__pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-sm;
+    @include flex-center;
+  }
+
+  &__principle-icon,
+  &__office-icon {
+    background: rgba($color-orange, 0.12);
+    color: $color-orange;
+  }
+
+  &__block-head {
+    max-width: 760px;
+    margin-bottom: $space-6;
+
+    h3 {
+      margin-top: $space-2;
+      font-size: $font-size-2xl;
+      line-height: $line-height-tight;
+    }
+  }
+
+  &__offices-grid,
+  &__values-grid,
+  &__pillars {
+    display: grid;
+    gap: $space-5;
+  }
+
+  &__offices-grid {
+    @include md {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__office {
+    padding: $space-6;
+
+    h4 {
+      margin: $space-4 0 $space-3;
+      font-size: $font-size-lg;
+    }
+
+    p {
+      margin-top: $space-4;
+      color: $color-slate-500;
+    }
+  }
+
+  &__office-meta {
+    display: grid;
+    gap: $space-3;
+
+    span {
+      display: flex;
+      align-items: flex-start;
+      gap: $space-2;
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+      line-height: $line-height-normal;
+    }
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      color: $color-blue;
+    }
+  }
+
+  &__values-grid {
+    @include md {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include lg {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  &__value {
+    padding: $space-5;
+
+    h4 {
+      margin-bottom: $space-3;
+      font-size: $font-size-base;
+      line-height: $line-height-tight;
+      color: $color-blue-deep;
+    }
+
+    p {
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__pillars {
+    @include md {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__pillar {
+    padding: $space-6;
+    border: 1px solid rgba($color-blue-deep, 0.08);
+
+    h3 {
+      margin: $space-4 0 $space-3;
+      font-size: $font-size-lg;
+    }
+
+    p {
+      color: $color-slate-500;
+    }
+  }
+
+  &__pillar-icon {
+    background: rgba($color-orange, 0.12);
+    color: $color-orange;
+  }
+
+  &__timeline {
+    display: grid;
+    gap: $space-4;
+  }
+
+  &__timeline-item {
+    display: grid;
+    gap: $space-3;
+    padding: $space-5 $space-6;
+    border-left: 3px solid $color-orange;
+
+    @include md {
+      grid-template-columns: 120px 1fr;
+      align-items: start;
+    }
+
+    p {
+      color: $color-slate-500;
+    }
+  }
+
+  &__timeline-year {
+    font-family: $font-mono;
+    color: $color-blue-deep;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+  }
+}

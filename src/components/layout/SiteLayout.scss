@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.site-main {
+  padding-top: 106px;
+
+  @include md {
+    padding-top: 124px;
+  }
+
+  @include lg {
+    padding-top: 128px;
+  }
+}

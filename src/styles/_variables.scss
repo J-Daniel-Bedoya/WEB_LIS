@@ -1,0 +1,142 @@
+// ============================================
+// DESIGN TOKENS - LIS ISP
+// ============================================
+
+// Corporate palette
+$color-blue-deep: #0a214a;
+$color-blue: #0e3a8a;
+$color-blue-strong: #1f5fbf;
+$color-blue-soft: #dfeafc;
+$color-orange: #f36a21;
+$color-orange-soft: #ff9c67;
+$color-orange-pale: #fff1e8;
+
+// Neutrals
+$color-white: #ffffff;
+$color-ice: #f5f7fb;
+$color-snow: #eef3f9;
+$color-slate-100: #d9e1ec;
+$color-slate-200: #bdc9d8;
+$color-slate-300: #92a2b7;
+$color-slate-400: #68788f;
+$color-slate-500: #4e5f75;
+$color-slate-700: #23344f;
+$color-slate-900: #14233c;
+
+// Legacy aliases to avoid touching every file
+$color-navy: $color-blue-deep;
+$color-navy-light: #102d5f;
+$color-blue-dark: #0c3278;
+$color-blue-light: #2f76e0;
+$color-cyan: $color-orange;
+$color-cyan-light: $color-orange-soft;
+$color-emerald: #0f8f65;
+$color-emerald-light: #2dbd91;
+$color-amber: #f59e0b;
+$color-coral: #d94841;
+$color-gray-50: $color-ice;
+$color-gray-100: $color-slate-100;
+$color-gray-200: $color-slate-200;
+$color-gray-300: $color-slate-300;
+$color-gray-400: $color-slate-400;
+$color-gray-500: $color-slate-500;
+$color-gray-600: $color-slate-700;
+$color-gray-700: $color-blue-deep;
+$color-gray-900: $color-slate-900;
+
+// Gradients
+$gradient-hero: linear-gradient(135deg, #091932 0%, #0d2d63 58%, #174a98 100%);
+$gradient-blue: linear-gradient(135deg, $color-blue 0%, $color-blue-strong 100%);
+$gradient-orange: linear-gradient(135deg, $color-orange 0%, $color-orange-soft 100%);
+$gradient-card: linear-gradient(180deg, $color-white 0%, $color-ice 100%);
+$gradient-dark: linear-gradient(180deg, #09172d 0%, #102b58 100%);
+
+// Typography
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 1.875rem;
+$font-size-3xl: 2.25rem;
+$font-size-4xl: 3rem;
+$font-size-5xl: 3.75rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.7;
+
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.05em;
+$letter-spacing-wider: 0.1em;
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+$space-32: 8rem;
+
+// Layout
+$container-max: 1200px;
+$container-narrow: 800px;
+$container-wide: 1400px;
+
+// Borders
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 14px;
+$radius-xl: 18px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+$border-light: 1px solid $color-slate-100;
+$border-medium: 1px solid $color-slate-200;
+
+// Shadows
+$shadow-xs: 0 1px 2px rgba(10, 33, 74, 0.05);
+$shadow-sm: 0 6px 18px rgba(14, 58, 138, 0.08);
+$shadow-md: 0 12px 30px rgba(10, 33, 74, 0.1);
+$shadow-lg: 0 24px 50px rgba(10, 33, 74, 0.14);
+$shadow-xl: 0 32px 72px rgba(10, 33, 74, 0.16);
+$shadow-blue: 0 14px 34px rgba(31, 95, 191, 0.2);
+$shadow-card: 0 8px 28px rgba(10, 33, 74, 0.07);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+$transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// Breakpoints
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+
+// Z-index
+$z-dropdown: 10;
+$z-sticky: 50;
+$z-header: 100;
+$z-overlay: 200;
+$z-modal: 300;
+$z-toast: 400;

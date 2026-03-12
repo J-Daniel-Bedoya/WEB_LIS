@@ -1,0 +1,71 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.testimonials {
+  &__grid {
+    display: grid;
+    gap: $space-6;
+
+    @include md { grid-template-columns: repeat(2, 1fr); }
+    @include lg { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  &__card {
+    @include card-flat;
+    padding: $space-8;
+    position: relative;
+  }
+
+  &__quote-icon {
+    color: rgba($color-blue, 0.1);
+    margin-bottom: $space-4;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+    color: $color-amber;
+    margin-bottom: $space-4;
+  }
+
+  &__text {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: $color-gray-500;
+    margin-bottom: $space-6;
+    font-style: italic;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding-top: $space-5;
+    border-top: $border-light;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    @include flex-center;
+    background: $gradient-blue;
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+  }
+
+  &__location {
+    display: block;
+    font-size: $font-size-xs;
+    color: $color-gray-400;
+  }
+}

@@ -1,0 +1,52 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section-header {
+  margin-bottom: $space-12;
+
+  @include lg {
+    margin-bottom: $space-16;
+  }
+
+  &--center {
+    text-align: center;
+
+    .section-header__subtitle {
+      margin-inline: auto;
+    }
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--light {
+    .section-header__label {
+      color: $color-orange-soft;
+    }
+
+    .section-header__title {
+      color: $color-white;
+    }
+
+    .section-header__subtitle {
+      color: rgba(255, 255, 255, 0.74);
+    }
+  }
+
+  &__label {
+    @include section-label;
+    display: block;
+    margin-bottom: $space-3;
+  }
+
+  &__title {
+    @include heading-2;
+    margin-bottom: $space-4;
+  }
+
+  &__subtitle {
+    @include body-text;
+    max-width: 640px;
+  }
+}

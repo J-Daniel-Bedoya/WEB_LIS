@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.document-section {
+  & + & {
+    margin-top: $space-10;
+  }
+
+  &__header {
+    margin-bottom: $space-6;
+
+    h2 {
+      margin-bottom: $space-3;
+    }
+
+    p {
+      max-width: 70ch;
+      color: $color-gray-500;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include md {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: $space-4;
+    padding: $space-5;
+    border: $border-light;
+    border-radius: $radius-md;
+    background: $color-white;
+  }
+
+  &__card-icon {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    background: $color-orange-pale;
+    color: $color-orange;
+  }
+
+  &__card-copy {
+    h3 {
+      margin-bottom: $space-2;
+      font-size: $font-size-base;
+    }
+
+    p {
+      color: $color-gray-500;
+      font-size: $font-size-sm;
+      margin-bottom: $space-4;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: $color-blue;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+}

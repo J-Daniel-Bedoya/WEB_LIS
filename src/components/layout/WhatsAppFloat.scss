@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.whatsapp-float {
+  position: fixed;
+  bottom: $space-6;
+  right: $space-6;
+  z-index: $z-sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: $color-white;
+  border-radius: $radius-full;
+  box-shadow: 0 4px 16px rgba(#25D366, 0.4);
+  transition: all $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(#25D366, 0.5);
+
+    .whatsapp-float__tooltip {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: calc(100% + $space-3);
+    top: 50%;
+    transform: translateX(8px) translateY(-50%);
+    background: $color-gray-900;
+    color: $color-white;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all $transition-base;
+  }
+}
