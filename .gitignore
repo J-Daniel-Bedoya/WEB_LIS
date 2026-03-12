@@ -15,6 +15,7 @@ dist-ssr
 .agents
 .claude
 mobile-check.png
+public/TARIFAS 2026.xlsx
 
 # Editor directories and files
 .vscode/*
