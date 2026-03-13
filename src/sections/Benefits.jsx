@@ -10,7 +10,7 @@ export default function Benefits() {
         <SectionHeader
           label="Ventajas"
           title="Lo que respalda el servicio"
-          subtitle="Cobertura local, soporte cercano y una operacion formal respaldada por atencion y cumplimiento."
+          subtitle="Cobertura local, soporte cercano y una operación formal respaldada por atención y cumplimiento."
         />
 
         <div className="benefits__grid">

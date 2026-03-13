@@ -1,0 +1,63 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pqrs-float {
+  position: fixed;
+  right: $space-6;
+  bottom: calc(#{$space-6} + 72px);
+  z-index: $z-sticky;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  min-height: 56px;
+  padding: 0 $space-4;
+  border: 1px solid rgba($color-blue-deep, 0.12);
+  border-radius: $radius-full;
+  background: $color-orange;
+  color: $color-white;
+  box-shadow: 0 10px 24px rgba($color-orange, 0.32);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba($color-orange, 0.36);
+
+    .pqrs-float__tooltip {
+      opacity: 1;
+      transform: translateX(0) translateY(-50%);
+      pointer-events: auto;
+    }
+  }
+
+  @include below-md {
+    bottom: calc(#{$space-6} + 78px);
+    padding: 0 $space-3;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.04em;
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: calc(100% + $space-3);
+    top: 50%;
+    transform: translateX(8px) translateY(-50%);
+    background: $color-gray-900;
+    color: $color-white;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all $transition-base;
+
+    @include below-md {
+      display: none;
+    }
+  }
+}

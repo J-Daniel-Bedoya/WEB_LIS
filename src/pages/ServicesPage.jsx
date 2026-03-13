@@ -1,8 +1,9 @@
 import PageHero from '../components/layout/PageHero';
 import DocumentSection from '../components/legal/DocumentSection';
+import { SERVICE_SUPPORT_DOCS } from '../data/legalData';
+import InternetTips from '../sections/InternetTips';
 import Services from '../sections/Services';
 import FAQ from '../sections/FAQ';
-import { TIPS_DOCUMENTS } from '../data/legalData';
 import './Pages.scss';
 
 export default function ServicesPage() {
@@ -10,8 +11,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Servicios"
-        title="Soluciones de conectividad y recursos utiles para el usuario"
-        description="Fibra optica, internet empresarial, radioenlace y herramientas de soporte para hogares y negocios."
+        title="Soluciones de conectividad y recursos útiles para el usuario"
+        description="Fibra óptica, internet empresarial, radioenlace, documentos de soporte y videoguías útiles para hogares y negocios."
         actions={[
           { label: 'Ver planes', to: '/planes' },
           { label: 'Solicitar soporte', to: '/contacto', variant: 'outline' },
@@ -20,12 +21,14 @@ export default function ServicesPage() {
 
       <Services />
 
-      <section className="page-section">
+      <InternetTips />
+
+      <section id="documentos-soporte" className="page-section">
         <div className="container">
           <DocumentSection
-            title="Guias y documentos de soporte"
-            description="Guias y formatos para consulta, soporte y gestion del servicio."
-            items={TIPS_DOCUMENTS}
+            title="Formatos y documentos de soporte"
+            description="Documentos operativos y administrativos para consulta, soporte y gestión del servicio."
+            items={SERVICE_SUPPORT_DOCS}
           />
         </div>
       </section>

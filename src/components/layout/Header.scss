@@ -89,32 +89,35 @@
   &__logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    gap: 2px;
+    line-height: 1.05;
     min-width: 0;
     max-width: min(178px, 42vw);
 
     strong {
       color: $color-slate-900;
-      font-size: 0.84rem;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+      font-size: 1.35rem;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-weight: $font-weight-bold;
     }
 
     span {
       color: $color-slate-500;
-      font-size: 0.72rem;
-      line-height: 1.1;
+      font-size: 0.7rem;
+      line-height: 1.15;
     }
 
     @include md {
       max-width: none;
+      gap: 3px;
 
       strong {
-        font-size: $font-size-base;
+        font-size: 1.5rem;
       }
 
       span {
-        font-size: $font-size-sm;
+        font-size: 0.8rem;
       }
     }
   }
@@ -172,6 +175,7 @@
     color: $color-slate-500;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
+    white-space: nowrap;
 
     &:hover {
       color: $color-blue;
@@ -206,7 +210,6 @@
   }
 
   &__nav-header,
-  &__nav-scroll,
   &__nav-meta,
   &__nav-brand,
   &__nav-close,
@@ -281,6 +284,11 @@
   }
 
   &__nav-scroll {
+    @include lg {
+      display: flex;
+      align-items: center;
+    }
+
     @include below-lg {
       display: flex;
       flex: 1;
@@ -326,12 +334,15 @@
       display: none;
     }
 
-    margin-top: auto;
-    padding-top: $space-2;
-    border-top: $border-light;
-
     .btn {
       width: 100%;
+    }
+
+    @include below-lg {
+      display: grid;
+      margin-top: auto;
+      padding-top: $space-2;
+      border-top: $border-light;
     }
   }
 

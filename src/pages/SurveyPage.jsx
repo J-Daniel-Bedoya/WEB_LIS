@@ -21,7 +21,7 @@ export default function SurveyPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const text = encodeURIComponent(
-      `Encuesta de satisfaccion LIS\n\nNombre: ${formData.name}\nCalidad del servicio: ${formData.service}\nAtencion y soporte: ${formData.support}\nNos recomendaria: ${formData.recommendation}\nComentario: ${formData.message}`
+      `Encuesta de satisfacción LIS\n\nNombre: ${formData.name}\nCalidad del servicio: ${formData.service}\nAtencion y soporte: ${formData.support}\nNos recomendaria: ${formData.recommendation}\nComentario: ${formData.message}`
     );
     window.open(`https://api.whatsapp.com/send?phone=+573105930440&text=${text}`, '_blank');
   };
@@ -30,8 +30,8 @@ export default function SurveyPage() {
     <>
       <PageHero
         eyebrow="Encuesta"
-        title="Encuesta de satisfaccion del usuario"
-        description="Comparte tu experiencia sobre instalacion, calidad del servicio y atencion recibida."
+        title="Encuesta de satisfacción del usuario"
+        description="Comparte tu experiencia sobre instalación, calidad del servicio y atención recibida."
       />
 
       <section className="page-section">
@@ -43,15 +43,15 @@ export default function SurveyPage() {
               <div className="page-summary">
                 <article className="page-summary__card">
                   <strong>Objetivo</strong>
-                  <p>Conocer tu percepcion sobre instalacion, calidad del servicio y atencion.</p>
+                  <p>Conocer tu percepción sobre instalación, calidad del servicio y atención.</p>
                 </article>
                 <article className="page-summary__card">
                   <strong>Seguimiento</strong>
-                  <p>La informacion ayuda a mejorar la atencion y el servicio prestado.</p>
+                  <p>La información ayuda a mejorar la atención y el servicio prestado.</p>
                 </article>
                 <article className="page-summary__card">
                   <strong>Envio</strong>
-                  <p>La respuesta se envia por WhatsApp como canal directo de atencion.</p>
+                  <p>La respuesta se envia por WhatsApp como canal directo de atención.</p>
                 </article>
               </div>
 
@@ -63,7 +63,7 @@ export default function SurveyPage() {
                 <div className="page-form__field">
                   <label htmlFor="survey-service">Calidad del servicio</label>
                   <select id="survey-service" name="service" value={formData.service} onChange={handleChange} required>
-                    <option value="">Selecciona una opcion</option>
+                    <option value="">Selecciona una opción</option>
                     {SURVEY_OPTIONS.map((item) => (
                       <option key={item} value={item}>
                         {item}
@@ -72,9 +72,9 @@ export default function SurveyPage() {
                   </select>
                 </div>
                 <div className="page-form__field">
-                  <label htmlFor="survey-support">Atencion y soporte</label>
+                  <label htmlFor="survey-support">Atención y soporte</label>
                   <select id="survey-support" name="support" value={formData.support} onChange={handleChange} required>
-                    <option value="">Selecciona una opcion</option>
+                    <option value="">Selecciona una opción</option>
                     {SURVEY_OPTIONS.map((item) => (
                       <option key={item} value={item}>
                         {item}
@@ -91,7 +91,7 @@ export default function SurveyPage() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Selecciona una opcion</option>
+                    <option value="">Selecciona una opción</option>
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                   </select>

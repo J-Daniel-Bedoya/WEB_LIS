@@ -45,8 +45,8 @@ export default function Header() {
             <Link to="/" className="header__logo" aria-label="Logística Integral Satelital - Inicio" onClick={handleNavClick}>
               <img src={logoLis} alt="Logística Integral Satelital" className="header__logo-image" />
               <div className="header__logo-text">
-                <strong>Logística Integral Satelital</strong>
-                <span>ISP regional</span>
+                <strong>LIS</strong>
+                <span>Logística Integral Satelital</span>
               </div>
             </Link>
 
@@ -81,7 +81,7 @@ export default function Header() {
                 </ul>
 
                 <div className="header__nav-meta">
-                  <span className="header__nav-meta-label">Atencion comercial</span>
+                  <span className="header__nav-meta-label">Atención comercial</span>
                   <a href={`tel:${CONTACT_INFO.phoneDial}`} className="header__nav-meta-phone">
                     {CONTACT_INFO.phone}
                   </a>
@@ -96,7 +96,7 @@ export default function Header() {
                     iconRight
                     onClick={handleNavClick}
                   >
-                    Solicitar asesoria
+                    Solicitar asesoría
                   </Button>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function Header() {
                 iconRight
                 className="header__cta-desktop"
               >
-                Solicitar asesoria
+                Solicitar asesoría
               </Button>
               {!isMobileOpen ? (
                 <button

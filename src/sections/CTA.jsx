@@ -17,10 +17,10 @@ export default function CTA() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="cta__title">
-            Contrata con una empresa visible, cercana y preparada para responder
+            Contrata con una empresa cercana, consolidada y preparada para responder
           </h2>
           <p className="cta__subtitle">
-            Planes claros, cobertura validada y atencion comercial por WhatsApp, telefono y correo.
+            Planes claros, cobertura validada y atención comercial por WhatsApp, teléfono y correo.
           </p>
           <div className="cta__actions">
             <Button variant="primary" size="lg" to="/planes" icon={ChevronRight} iconRight>

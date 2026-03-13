@@ -6,8 +6,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contacto"
-        title="Atencion comercial y soporte con canales visibles"
-        description="Confirma cobertura, recibe asesoria comercial o solicita soporte por nuestros canales de atencion."
+        title="Atención comercial y soporte"
+        description="Confirma cobertura, recibe asesoría comercial o solicita soporte por nuestros canales de atención."
       />
       <Contact />
     </>

@@ -16,19 +16,19 @@ export default function RegulatoryHub() {
       <div className="container">
         <SectionHeader
           label="Centro regulatorio"
-          title="Informacion obligatoria, politicas y proteccion al usuario"
-          subtitle="Para una ISP seria, lo regulatorio no se esconde. Debe estar visible, ordenado y conectado con la experiencia comercial para reforzar confianza y cumplimiento."
+          title="Información obligatoria, políticas y protección al usuario"
+          subtitle="Información regulatoria ordenada y accesible, conectada con la experiencia comercial para respaldar confianza y cumplimiento."
           light
         />
 
         <div className="regulatory__summary">
           <div className="regulatory__summary-card">
             <span>Compromiso institucional</span>
-            <strong>Documentacion visible para usuarios, autoridades y procesos comerciales.</strong>
+            <strong>Documentación disponible para usuarios, autoridades y procesos comerciales.</strong>
           </div>
           <p>
             Este bloque ya no funciona como una rejilla suelta. Ahora organiza el contenido
-            obligatorio en una navegacion interna que puede crecer luego a paginas dedicadas sin
+            obligatorio en una navegación interna que puede crecer luego a páginas dedicadas sin
             romper la experiencia principal.
           </p>
         </div>

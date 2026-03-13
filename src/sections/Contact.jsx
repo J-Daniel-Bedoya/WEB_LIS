@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin, Clock, MessageCircle, ShieldCheck, RadioTower, Wrench } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import Button from '../components/ui/Button';
-import { CONTACT_INFO } from '../data/siteData';
+import { CONTACT_INFO, buildWhatsAppUrl } from '../data/siteData';
 import { getAllLocationOptions, getAvailablePlansForLocation, formatPrice } from '../utils/planUtils';
 import './Contact.scss';
 
@@ -16,13 +16,13 @@ const TRUST_POINTS = [
   },
   {
     icon: Wrench,
-    title: 'Soporte real',
-    text: 'Canales visibles para atencion comercial, orientacion remota y seguimiento tecnico.',
+    title: 'Soporte directo',
+    text: 'Canales de atención comercial, orientación remota y seguimiento técnico.',
   },
   {
     icon: ShieldCheck,
-    title: 'Empresa formal',
-    text: 'Informacion institucional, ubicacion y documentos regulatorios integrados al sitio.',
+    title: 'Respaldo institucional',
+    text: 'Información institucional, ubicación y documentos regulatorios integrados al sitio.',
   },
 ];
 
@@ -69,15 +69,15 @@ export default function Contact() {
       'Hola, me interesa contratar internet.',
       '',
       `Nombre: ${formData.name}`,
-      `Telefono: ${formData.phone}`,
-      `Ubicacion: ${locationName}`,
+      `Teléfono: ${formData.phone}`,
+      `Ubicación: ${locationName}`,
       formData.plan ? `Plan: ${formData.plan}` : '',
       formData.message ? `Mensaje: ${formData.message}` : '',
     ]
       .filter(Boolean)
-      .join('%0A');
+      .join('\n');
 
-    window.open(`https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsappPhone}&text=${text}`, '_blank');
+    window.open(buildWhatsAppUrl(CONTACT_INFO.whatsappPhone, text), '_blank');
   };
 
   return (
@@ -85,8 +85,8 @@ export default function Contact() {
       <div className="container">
         <SectionHeader
           label="Contacto"
-          title="Habla con un asesor y valida la mejor solucion para tu sector"
-          subtitle="Ubicacion visible, canales reales y una solicitud simple. Te contactamos por WhatsApp para validar cobertura y plan."
+          title="Habla con un asesor y valida la mejor solución para tu sector"
+          subtitle="Dejanos tus datos y te contactamos por WhatsApp para validar cobertura y plan."
           light
         />
 
@@ -118,10 +118,10 @@ export default function Contact() {
             transition={{ duration: 0.35 }}
           >
             <div className="contact__form-header">
-              <h3>Solicita cobertura o cotizacion</h3>
+              <h3>Solicita cobertura o cotización</h3>
               <p>
                 Diligencia tus datos y te contactamos por WhatsApp para validar cobertura,
-                tecnologia disponible y plan recomendado.
+                tecnología disponible y plan recomendado.
               </p>
             </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
               </div>
 
               <div className="contact__field">
-                <label htmlFor="contact-phone">Telefono</label>
+                <label htmlFor="contact-phone">Teléfono</label>
                 <input
                   id="contact-phone"
                   type="tel"
@@ -153,7 +153,7 @@ export default function Contact() {
               </div>
 
               <div className="contact__field">
-                <label htmlFor="contact-location">Ubicacion</label>
+                <label htmlFor="contact-location">Ubicación</label>
                 <select
                   id="contact-location"
                   name="locationId"
@@ -161,7 +161,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Selecciona tu ubicacion</option>
+                  <option value="">Selecciona tu ubicación</option>
                   {locationGroups.map((group) => (
                     <optgroup key={group.label} label={group.label}>
                       {group.options.map((option) => (
@@ -175,7 +175,7 @@ export default function Contact() {
               </div>
 
               <div className="contact__field">
-                <label htmlFor="contact-plan">Servicio de interes</label>
+                <label htmlFor="contact-plan">Servicio de interés</label>
                 <select
                   id="contact-plan"
                   name="plan"
@@ -183,7 +183,7 @@ export default function Contact() {
                   onChange={handleChange}
                 >
                   <option value="">
-                    {formData.locationId ? 'Selecciona un plan' : 'Primero selecciona tu ubicacion'}
+                    {formData.locationId ? 'Selecciona un plan' : 'Primero selecciona tu ubicación'}
                   </option>
                   {planOptions.map((option) => (
                     <option key={option.id} value={option.label}>
@@ -220,8 +220,8 @@ export default function Contact() {
           >
             <div className="contact__info-card">
               <div className="contact__info-head">
-                <h3>Canales de atencion</h3>
-                <p>Presencia local, soporte visible y contacto directo para procesos comerciales y tecnicos.</p>
+                <h3>Canales de atención</h3>
+                <p>Presencia local y contacto directo para procesos comerciales y técnicos.</p>
               </div>
 
               <div className="contact__info-item">
@@ -241,18 +241,28 @@ export default function Contact() {
                   <Phone size={20} />
                 </div>
                 <div>
-                  <strong>Telefonos por municipio</strong>
+                  <strong>Teléfonos por municipio</strong>
                   <div className="contact__meta-list">
                     {CONTACT_INFO.municipalityPhones.map((line) => (
                       <div key={line.label} className="contact__meta-entry">
-                        <a href={`tel:${line.dial}`}>
+                        <a
+                          href={buildWhatsAppUrl(
+                            line.whatsappDial,
+                            `Hola, quiero información sobre el servicio de internet para ${line.label}.`
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {line.label}: {line.phone}
                         </a>
                         {line.note ? <span>{line.note}</span> : null}
                       </div>
                     ))}
                     <div className="contact__meta-entry">
-                      <a href={`tel:${CONTACT_INFO.landlineDial}`}>Oficina: {CONTACT_INFO.landline}</a>
+                      <a href={CONTACT_INFO.whatsapp} target="_blank" rel="noopener noreferrer">
+                        Oficina / WhatsApp principal: {CONTACT_INFO.phone}
+                      </a>
+                      <span>Teléfono fijo de oficina: {CONTACT_INFO.landline}</span>
                     </div>
                   </div>
                 </div>
@@ -273,7 +283,7 @@ export default function Contact() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <strong>Ubicacion</strong>
+                  <strong>Ubicación</strong>
                   <span>{CONTACT_INFO.address}</span>
                 </div>
               </div>

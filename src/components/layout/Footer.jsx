@@ -13,20 +13,20 @@ export default function Footer() {
         <div className="footer__grid">
           <div className="footer__brand">
             <div className="footer__logo">
-              <img src={logoLis} alt="Logistica Integral Satelital" className="footer__logo-image" />
+              <img src={logoLis} alt="Logística Integral Satelital" className="footer__logo-image" />
               <div>
                 <strong>LIS</strong>
-                <span>Logistica Integral Satelital</span>
+                <span>Logística Integral Satelital</span>
               </div>
             </div>
 
             <p className="footer__description">
-              Empresa regional de conectividad con servicios de fibra optica,
-              radioenlace, soporte remoto y documentacion regulatoria visible para sus usuarios.
+              Empresa regional de conectividad con servicios de fibra óptica,
+              radioenlace y soporte remoto para el Occidente Antioqueño.
             </p>
 
             <div className="footer__contact-list">
-              <a href={`tel:${CONTACT_INFO.phoneDial}`}>
+              <a href={CONTACT_INFO.whatsapp} target="_blank" rel="noopener noreferrer">
                 <Phone size={16} />
                 <span>{CONTACT_INFO.phone}</span>
               </a>
@@ -85,7 +85,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; {year} Logistica Integral Satelital S.A.S. Todos los derechos reservados.</p>
+          <p>&copy; {year} Logística Integral Satelital S.A.S. Todos los derechos reservados.</p>
           <p className="footer__regulatory">
             Operador regional con enfoque en transparencia, soporte al usuario y cumplimiento sectorial.
           </p>

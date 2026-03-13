@@ -2,50 +2,88 @@
 @use '../../styles/mixins' as *;
 
 .legal-menu {
-  padding: $space-4;
+  padding: $space-5;
   border: 1px solid rgba($color-blue-deep, 0.1);
-  border-radius: $radius-sm;
+  border-radius: $radius-md;
   background: $color-white;
 
+  @include lg {
+    position: sticky;
+    top: $space-24;
+  }
+
   h2 {
-    font-size: $font-size-base;
-    margin-bottom: $space-3;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $color-gray-400;
+    margin-bottom: $space-4;
+    padding-left: $space-3;
   }
 
   ul {
     display: grid;
-    gap: $space-2;
+    gap: $space-1;
   }
 
   &__link {
-    display: block;
-    padding: $space-3 $space-4;
-    border-left: 3px solid transparent;
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: $space-3;
+    align-items: center;
+    padding: $space-3;
     border-radius: $radius-sm;
-    background: transparent;
-    border-top: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border-left: 3px solid transparent;
+    transition: background $transition-fast, border-color $transition-fast;
 
-    &:hover,
-    &.active {
-      border-color: rgba($color-blue, 0.12);
-      border-left-color: $color-orange;
+    &:hover {
       background: rgba($color-blue, 0.03);
     }
 
+    &.active {
+      border-left-color: $color-orange;
+      background: rgba($color-blue, 0.04);
+
+      .legal-menu__icon {
+        background: rgba($color-orange, 0.12);
+        color: $color-orange;
+      }
+
+      strong {
+        color: $color-blue-deep;
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-sm;
+    background: rgba($color-blue-deep, 0.05);
+    color: $color-gray-400;
+    flex-shrink: 0;
+    transition: background $transition-fast, color $transition-fast;
+  }
+
+  &__copy {
+    min-width: 0;
+
     strong {
       display: block;
-      margin-bottom: $space-1;
+      margin-bottom: 1px;
       color: $color-gray-900;
       font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
     }
 
     span {
       display: block;
-      color: $color-gray-500;
+      color: $color-gray-400;
       font-size: $font-size-xs;
       line-height: $line-height-normal;
+      @include truncate(1);
     }
   }
 }

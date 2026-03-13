@@ -169,6 +169,118 @@
   }
 }
 
+// ─── PQRS PROCESS STEPS ──────────────────────
+.pqrs-steps {
+  display: grid;
+  gap: $space-3;
+  margin-bottom: $space-8;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pqrs-step {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-5;
+  border: 1px solid rgba($color-blue-deep, 0.08);
+  border-radius: $radius-md;
+  background: $color-white;
+
+  &__number {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: rgba($color-orange, 0.1);
+    color: $color-orange;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    strong {
+      display: block;
+      margin-bottom: $space-1;
+      font-size: $font-size-sm;
+      color: $color-gray-900;
+    }
+
+    p {
+      font-size: $font-size-xs;
+      color: $color-gray-500;
+      line-height: $line-height-normal;
+    }
+  }
+}
+
+// ─── HOME PATHWAYS ───────────────────────────
+.pqrs-info-grid {
+  display: grid;
+  gap: $space-4;
+  margin-bottom: $space-8;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pqrs-info-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: $space-4;
+  padding: $space-5;
+  border: 1px solid rgba($color-blue-deep, 0.08);
+  border-radius: $radius-md;
+  background: linear-gradient(180deg, rgba($color-orange, 0.04) 0%, $color-white 100%);
+
+  &__icon {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    background: rgba($color-orange, 0.12);
+    color: $color-orange;
+  }
+
+  &__body {
+    display: grid;
+    gap: $space-1;
+
+    strong {
+      color: $color-gray-900;
+      font-size: $font-size-sm;
+    }
+
+    a,
+    span {
+      color: $color-gray-500;
+      font-size: $font-size-sm;
+      line-height: $line-height-normal;
+    }
+
+    a {
+      color: $color-blue;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.pqrs-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-5;
+  margin-bottom: $space-8;
+}
+
 .home-pathways {
   background: $color-snow;
 

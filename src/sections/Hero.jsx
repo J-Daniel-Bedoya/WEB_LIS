@@ -2,130 +2,123 @@ import { motion } from 'framer-motion';
 import { ChevronRight, MapPin, ShieldCheck, Zap } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
-import { STATS, HERO_HIGHLIGHTS, COMPANY_COPY } from '../data/siteData';
+import { STATS, HERO_HIGHLIGHTS } from '../data/siteData';
 import './Hero.scss';
+
+const HERO_IMAGE = '/uploads/2024/03/Banner-1.jpeg';
 
 export default function Hero() {
   return (
     <section id="inicio" className="hero">
-      <div className="hero__bg">
-        <div className="hero__bg-grid" />
-        <div className="hero__bg-glow" />
-        <div className="hero__bg-wash" />
+      <div className="hero__backdrop">
+        <div className="hero__backdrop-grid" />
+        <div className="hero__backdrop-glow hero__backdrop-glow--left" />
+        <div className="hero__backdrop-glow hero__backdrop-glow--right" />
       </div>
 
       <div className="container hero__container">
-        <div className="hero__content">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="highlight">{COMPANY_COPY.heroBadge}</Badge>
-          </motion.div>
+        <div className="hero__surface">
+          <div className="hero__grid">
+            <div className="hero__content">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Badge variant="highlight" className="hero__badge">
+                  Occidente Antioqueño conectado con soporte local
+                </Badge>
+              </motion.div>
 
-          <motion.h1
-            className="hero__title"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-          >
-            Conectividad con respaldo real para hogares, negocios y zonas especiales del{' '}
-            <span className="hero__title-highlight">Occidente Antioqueño</span>
-          </motion.h1>
+              <motion.h1
+                className="hero__title"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.08 }}
+              >
+                <span className="hero__title-prefix">LIS.</span> Tu puerta de entrada a la Web
+              </motion.h1>
 
-          <motion.p
-            className="hero__subtitle"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.16 }}
-          >
-            Fibra optica y radioenlace con cobertura regional, soporte local y una operacion
-            formal pensada para hogares, negocios y zonas especiales.
-          </motion.p>
+              <motion.p
+                className="hero__subtitle"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.16 }}
+              >
+                Fibra óptica y radioenlace para hogares, negocios y zonas especiales, con
+                cobertura regional y acompañamiento técnico desde la instalación hasta
+                el soporte.
+              </motion.p>
 
-          <motion.ul
-            className="hero__list"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.24 }}
-          >
-            {HERO_HIGHLIGHTS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </motion.ul>
+              <motion.ul
+                className="hero__list"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.24 }}
+              >
+                {HERO_HIGHLIGHTS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </motion.ul>
 
-          <motion.div
-            className="hero__actions"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.32 }}
-          >
-            <Button variant="primary" size="lg" to="/planes" icon={ChevronRight} iconRight>
-              Ver planes
-            </Button>
-            <Button variant="secondary" size="lg" to="/cobertura" icon={MapPin}>
-              Verificar cobertura
-            </Button>
-          </motion.div>
+              <motion.div
+                className="hero__actions"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.32 }}
+              >
+                <Button variant="primary" size="lg" to="/planes" icon={ChevronRight} iconRight>
+                  Ver planes
+                </Button>
+                <Button variant="secondary" size="lg" to="/cobertura" icon={MapPin}>
+                  Verificar cobertura
+                </Button>
+              </motion.div>
 
-          <motion.div
-            className="hero__features"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-          >
-            <div className="hero__feature">
-              <Zap size={16} />
-              <span>Planes claros por segmento</span>
-            </div>
-            <div className="hero__feature">
-              <ShieldCheck size={16} />
-              <span>Empresa formal y documentada</span>
-            </div>
-            <div className="hero__feature">
-              <MapPin size={16} />
-              <span>Cobertura con presencia regional</span>
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.aside
-          className="hero__visual"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.28 }}
-        >
-          <div className="hero__card">
-            <div className="hero__card-header">
-              <span className="hero__card-badge">Empresa conectada</span>
-              <span className="hero__card-popular">Cobertura + soporte</span>
+              <motion.div
+                className="hero__trust"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.55, delay: 0.4 }}
+              >
+                <div className="hero__trust-item">
+                  <Zap size={16} />
+                  <span>Planes claros por tecnología y segmento</span>
+                </div>
+                <div className="hero__trust-item">
+                  <ShieldCheck size={16} />
+                  <span>Trayectoria desde 2012 con respaldo regulatorio</span>
+                </div>
+              </motion.div>
             </div>
 
-            <div className="hero__card-speed">
-              <span className="hero__card-number">Lun-Sab</span>
-              <div className="hero__card-unit">
-                <span>Horarios</span>
-                <span>publicados</span>
+            <motion.aside
+              className="hero__visual"
+              initial={{ opacity: 0, y: 28, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.75, delay: 0.18 }}
+            >
+              <div className="hero__media">
+                <img
+                  src={HERO_IMAGE}
+                  alt="Vista regional del Occidente Antioqueño"
+                  className="hero__image"
+                />
+                <div className="hero__media-overlay" />
               </div>
-            </div>
 
-            <div className="hero__card-price hero__card-price--meta">
-              <span className="hero__card-amount">Fibra · Radio · Soporte</span>
-            </div>
+              <div className="hero__floating hero__floating--primary">
+                <strong>Cobertura regional</strong>
+                <span>Sedes y municipios conectados en Occidente Antioqueño.</span>
+              </div>
 
-            <ul className="hero__card-features">
-              <li>Planes para hogar y empresa</li>
-              <li>Soporte remoto SGM-R</li>
-              <li>Centro legal disponible</li>
-              <li>Canales por municipio y horarios visibles</li>
-            </ul>
-
-            <Button variant="primary" size="md" to="/legal" style={{ width: '100%' }}>
-              Ver respaldo institucional
-            </Button>
+              <div className="hero__floating hero__floating--secondary">
+                <span className="hero__floating-label">Atención comercial</span>
+                <strong>WhatsApp, oficinas y soporte</strong>
+              </div>
+            </motion.aside>
           </div>
-        </motion.aside>
+        </div>
       </div>
 
       <div className="hero__stats">
@@ -137,7 +130,7 @@ export default function Hero() {
                 className="hero__stat"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.55 + index * 0.08 }}
+                transition={{ duration: 0.4, delay: 0.52 + index * 0.08 }}
               >
                 <span className="hero__stat-value">{stat.value}</span>
                 <span className="hero__stat-label">{stat.label}</span>

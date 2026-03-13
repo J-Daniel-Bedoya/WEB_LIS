@@ -1,0 +1,40 @@
+# Logistica Integral Satelital
+
+> Sitio oficial de Logistica Integral Satelital (LIS), proveedor regional de internet por fibra optica y radioenlace en el Occidente Antioqueno, Colombia.
+
+## Resumen
+
+- Empresa enfocada en conectividad para hogares, negocios y zonas con necesidades de cobertura especial.
+- El sitio incluye oferta comercial, cobertura, canales de contacto y un centro legal con documentos de cumplimiento.
+- Idioma principal: espanol.
+- Region principal: Occidente Antioqueno, Colombia.
+
+## Paginas principales
+
+- / : resumen comercial del servicio, beneficios, preguntas frecuentes y accesos principales.
+- /planes : planes de internet por ubicacion y tecnologia.
+- /cobertura : municipios y sectores con cobertura disponible.
+- /servicios : portafolio de fibra optica, radioenlace, internet empresarial y soporte.
+- /empresa : trayectoria, sedes y contexto institucional.
+- /contacto : telefonos, WhatsApp, correo y horarios de atencion.
+- /legal : centro legal y documental.
+
+## Centro legal
+
+- /legal/normatividad : normatividad, politicas y documentos obligatorios.
+- /legal/calidad-servicio : reportes historicos de calidad del servicio.
+- /legal/indicadores-usuario : indicadores y certificaciones de proteccion al usuario.
+- /legal/pqrsf : canales y proceso de PQRSF.
+- /legal/encuesta : mecanismos de escucha y satisfaccion del usuario.
+
+## Contacto
+
+- Telefono principal: +57 310 593 0440
+- Correo: lis.sopetran2018@gmail.com
+- Direccion principal: Carrera 13 # 9-45, Sopetran, Antioquia, Colombia
+
+## Notas de uso
+
+- Priorizar las paginas del centro legal cuando se necesite informacion regulatoria o de cumplimiento.
+- Priorizar /contacto para canales oficiales y soporte.
+- Priorizar /planes y /cobertura para informacion comercial actual del servicio.

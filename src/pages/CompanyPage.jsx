@@ -7,8 +7,8 @@ export default function CompanyPage() {
     <>
       <PageHero
         eyebrow="Empresa"
-        title="Trayectoria, sedes, mision y valores de la empresa"
-        description="Conoce el origen de LIS, su presencia regional, su estructura institucional y los principios que respaldan la operacion."
+        title="Nuestra historia, presencia y propósito"
+        description="Conoce la historia de LIS, su presencia operativa en la región y el propósito que orienta su forma de trabajar."
         actions={[
           { label: 'Ver cobertura', to: '/cobertura' },
           { label: 'Contactar', to: '/contacto', variant: 'outline' },

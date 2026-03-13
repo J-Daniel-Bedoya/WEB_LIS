@@ -1,172 +1,786 @@
 @use '../styles/variables' as *;
 @use '../styles/mixins' as *;
 
-.coverage {
-  &__content {
-    display: grid;
-    gap: $space-10;
+/* ── layout ──────────────────────────────────── */
 
-    > * {
-      min-width: 0;
+.coverage {
+  &__layout {
+    display: grid;
+    gap: $space-6;
+
+    @include lg {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      align-items: start;
+      gap: $space-8;
+    }
+
+    &--compact {
+      @include lg {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  /* ── map ────────────────────────────────────── */
+
+  &__map-wrap {
+    order: 2;
+
+    @include lg {
+      order: 1;
+      position: sticky;
+      top: 100px;
+    }
+
+    .coverage__layout--compact & {
+      order: 1;
+
+      @include lg {
+        position: static;
+      }
+    }
+  }
+
+  &__map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 56px rgba(3, 15, 35, 0.28);
+  }
+
+  &__map {
+    height: 420px;
+    width: 100%;
+    z-index: 1;
+
+    @include md {
+      height: 500px;
     }
 
     @include lg {
-      grid-template-columns: 1fr 1.1fr;
-      align-items: center;
+      height: 560px;
+    }
+
+    &--compact {
+      height: 340px;
+
+      @include md {
+        height: 400px;
+      }
+
+      @include lg {
+        height: 420px;
+      }
     }
   }
 
-  &__map-visual {
-    position: relative;
-    min-height: 420px;
-    border-radius: $radius-2xl;
-    overflow: hidden;
-    @include glass;
-  }
+  /* ── legend ─────────────────────────────────── */
 
-  &__map-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.76;
-  }
-
-  &__map-info {
-    position: absolute;
-    left: $space-6;
-    bottom: $space-6;
-    display: grid;
-    gap: $space-1;
-    padding: $space-5;
+  &__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+    margin-top: $space-4;
+    padding: $space-3 $space-4;
     border-radius: $radius-lg;
-    background: rgba(9, 25, 50, 0.8);
-    max-width: 230px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  &__map-count {
-    color: $color-white;
-    font-family: $font-mono;
-    font-size: 3.5rem;
-    line-height: 1;
-  }
-
-  &__map-label {
-    color: $color-orange-soft;
-    font-weight: $font-weight-semibold;
-  }
-
-  &__map-sublabel {
-    color: rgba(255, 255, 255, 0.68);
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    color: rgba(255, 255, 255, 0.7);
     font-size: $font-size-sm;
   }
 
-  &__zones {
-    display: flex;
-    flex-direction: column;
-    gap: $space-6;
-    min-width: 0;
+  &__legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    &--fiber {
+      background: $color-orange;
+    }
+
+    &--radio {
+      background: $color-blue-strong;
+    }
+
+    &--mixed {
+      background: $color-emerald;
+    }
   }
 
-  &__group {
-    @include glass;
-    border-radius: $radius-lg;
+  /* ── checker panel ──────────────────────────── */
+
+  &__checker {
+    order: 1;
+    display: grid;
+    gap: $space-5;
     padding: $space-6;
-    min-width: 0;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 48px rgba(3, 15, 35, 0.2);
+
+    @include md {
+      padding: $space-8;
+    }
+
+    @include lg {
+      order: 2;
+    }
   }
 
-  &__group-header {
+  &__checker-header {
+    h3 {
+      color: $color-white;
+      font-size: $font-size-xl;
+      margin-bottom: $space-2;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.6;
+    }
+  }
+
+  /* ── tabs ───────────────────────────────────── */
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-2;
+    padding: $space-1;
+    border-radius: $radius-md;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  &__tab {
+    @include flex-center;
+    gap: $space-2;
+    padding: $space-3 $space-2;
+    border: none;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &--active {
+      color: $color-white;
+      background: rgba($color-orange, 0.18);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    span {
+      @include below-sm {
+        display: none;
+      }
+    }
+  }
+
+  /* ── search input ───────────────────────────── */
+
+  &__search-area {
+    min-height: 52px;
+  }
+
+  &__search-input {
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: $space-3 $space-4 $space-3 2.75rem;
+      border-radius: $radius-md;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: $color-white;
+      font-family: $font-primary;
+      font-size: $font-size-base;
+      transition: border-color $transition-fast;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $color-orange;
+      }
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: $space-3;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+  }
+
+  /* ── dropdown ───────────────────────────────── */
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: $z-dropdown;
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: $radius-md;
+    background: rgba(20, 35, 60, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+  }
+
+  &__dropdown-item {
     display: flex;
     align-items: center;
     gap: $space-3;
-    margin-bottom: $space-5;
-    flex-wrap: wrap;
+    width: 100%;
+    padding: $space-3 $space-4;
+    border: none;
+    background: transparent;
+    color: $color-white;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    text-align: left;
+    cursor: pointer;
+    transition: background $transition-fast;
 
-    h3 {
-      color: $color-white;
-      font-size: $font-size-md;
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
     }
+
+    > svg {
+      color: $color-orange-soft;
+      flex-shrink: 0;
+    }
+
+    div {
+      flex: 1;
+      min-width: 0;
+
+      strong {
+        display: block;
+      }
+
+      span {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: $font-size-xs;
+      }
+    }
+  }
+
+  &__dropdown-empty {
+    padding: $space-4;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: $font-size-sm;
+    text-align: center;
+  }
+
+  /* ── geolocate ──────────────────────────────── */
+
+  &__locate {
+    display: grid;
+    gap: $space-4;
+    text-align: center;
+
+    p {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: $font-size-sm;
+      line-height: 1.5;
+    }
+  }
+
+  /* ── coordinates form ───────────────────────── */
+
+  &__coords {
+    display: grid;
+    gap: $space-4;
+  }
+
+  &__coords-hint {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: $font-size-sm;
+    line-height: 1.5;
+  }
+
+  &__coords-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+  }
+
+  &__field {
+    display: grid;
+    gap: $space-2;
+
+    label {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+
+    input {
+      width: 100%;
+      padding: $space-3 $space-4;
+      border-radius: $radius-md;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: $color-white;
+      font-family: $font-primary;
+      font-size: $font-size-base;
+      transition: border-color $transition-fast;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $color-orange;
+      }
+    }
+  }
+
+  /* ── quick chips ────────────────────────────── */
+
+  &__quick-list {
+    display: grid;
+    gap: $space-3;
+  }
+
+  &__quick-label {
+    color: $color-orange-soft;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+  }
+
+  &__quick-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__quick-item {
+    @include flex-center;
+    gap: $space-1;
+    padding: $space-2 $space-3;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.78);
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: rgba($color-orange, 0.16);
+      border-color: rgba($color-orange, 0.3);
+      color: $color-white;
+    }
+
+    svg {
+      color: $color-orange-soft;
+    }
+
+    &--fiber {
+      border-color: rgba($color-orange, 0.2);
+      background: rgba($color-orange, 0.08);
+
+      &:hover {
+        background: rgba($color-orange, 0.2);
+        border-color: rgba($color-orange, 0.35);
+      }
+    }
+  }
+
+  /* ── result card ────────────────────────────── */
+
+  &__result {
+    display: grid;
+    gap: $space-4;
+    padding: $space-5;
+    border-radius: $radius-lg;
+    animation: coverageSlideIn 0.3s ease;
+
+    &--found {
+      background: rgba(15, 143, 101, 0.12);
+      border: 1px solid rgba(15, 143, 101, 0.25);
+    }
+
+    &--not-found {
+      background: rgba(217, 72, 65, 0.1);
+      border: 1px solid rgba(217, 72, 65, 0.2);
+    }
+  }
+
+  @keyframes coverageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__result-header {
+    display: flex;
+    gap: $space-3;
+    align-items: start;
+
+    strong {
+      display: block;
+      color: $color-white;
+      font-size: $font-size-base;
+      margin-bottom: $space-1;
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__result-icon--success {
+    color: $color-emerald-light;
+    flex-shrink: 0;
+  }
+
+  &__result-icon--warning {
+    color: $color-coral;
+    flex-shrink: 0;
+  }
+
+  &__result-error {
+    display: flex;
+    gap: $space-3;
+    align-items: center;
+
+    svg {
+      color: $color-coral;
+      flex-shrink: 0;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+  }
+
+  &__result-details {
+    padding-left: 34px;
+
+    h4 {
+      color: $color-white;
+      font-size: $font-size-lg;
+      margin-bottom: $space-1;
+    }
+  }
+
+  &__result-parent {
+    display: block;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: $font-size-sm;
+    margin-bottom: $space-3;
+  }
+
+  &__result-techs {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__result-tech {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: $font-size-sm;
 
     svg {
       color: $color-orange-soft;
     }
   }
 
-  &__group-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: $space-3;
-
-    @include sm {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @include md {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  &__result-note {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    padding-left: 34px;
   }
 
-  &__zone {
+  &__result-coords {
     display: flex;
     align-items: center;
     gap: $space-2;
     padding: $space-2 $space-3;
-    border-radius: $radius-md;
-    background: rgba(255, 255, 255, 0.04);
-    min-width: 0;
+    margin-left: 34px;
+    border-radius: $radius-sm;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: $font-size-sm;
+    font-family: $font-mono;
+    width: fit-content;
+  }
 
-    &--link {
-      text-decoration: none;
-      cursor: pointer;
-      transition: background $transition-fast;
+  &__result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    padding-left: 34px;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
+    @include below-sm {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
       }
     }
   }
 
-  &__zone-speed {
-    margin-left: auto;
-    font-family: $font-mono;
-    font-size: $font-size-xs;
+  &__result-reset {
+    justify-self: center;
+    padding: $space-2 $space-4;
+    border: none;
+    background: transparent;
     color: rgba(255, 255, 255, 0.5);
-    white-space: nowrap;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
   }
 
-  &__zone-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: $radius-full;
-    flex-shrink: 0;
+  /* ── leaflet popup ──────────────────────────── */
+
+  &__popup {
+    display: grid;
+    gap: 6px;
+    min-width: 180px;
+
+    strong {
+      font-size: 14px;
+      color: $color-slate-900;
+    }
+  }
+
+  &__popup-parent {
+    font-size: 12px;
+    color: $color-slate-400;
+  }
+
+  &__popup-techs {
+    display: grid;
+    gap: 4px;
+  }
+
+  &__popup-tech {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
 
     &--fiber {
-      background: $color-orange-soft;
-      box-shadow: 0 0 10px rgba($color-orange-soft, 0.5);
+      background: $color-orange-pale;
+      color: $color-orange;
     }
 
     &--radio {
-      background: $color-blue-light;
-      box-shadow: 0 0 10px rgba($color-blue-light, 0.5);
+      background: $color-blue-soft;
+      color: $color-blue;
     }
   }
 
-  &__zone-name {
-    min-width: 0;
-    color: rgba(255, 255, 255, 0.78);
+  &__popup-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-blue;
+    text-decoration: none;
+    margin-top: 4px;
+
+    &:hover {
+      color: $color-blue-strong;
+    }
+  }
+
+  /* ── metrics ────────────────────────────────── */
+
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-4;
+    margin-top: $space-8;
+
+    @include below-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include below-sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__metric {
+    display: grid;
+    gap: $space-2;
+    padding: $space-4;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  &__metric-value {
+    color: $color-white;
+    font-family: $font-mono;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  &__metric-label {
+    color: rgba(255, 255, 255, 0.7);
     font-size: $font-size-sm;
-
-    small {
-      color: rgba(255, 255, 255, 0.45);
-      font-size: $font-size-xs;
-    }
+    line-height: 1.45;
   }
 
-  &__cta {
-    padding-top: $space-2;
+  /* ── footer CTA ─────────────────────────────── */
+
+  &__footer {
+    display: grid;
+    gap: $space-5;
+    margin-top: $space-8;
+    padding: $space-6;
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba($color-blue-deep, 0.96) 0%, rgba($color-blue, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 26px 56px rgba(3, 15, 35, 0.24);
+
+    @include lg {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: $space-8;
+    }
+
+    h3 {
+      color: $color-white;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: $space-2 0;
+    }
 
     p {
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: $space-4;
+      max-width: 58ch;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.6;
     }
+  }
+
+  &__footer-eyebrow {
+    color: $color-orange-soft;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+  }
+
+  &__footer-copy {
+    display: grid;
+    gap: $space-2;
+  }
+
+  &__footer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+
+    .btn {
+      width: 100%;
+
+      @include sm {
+        width: auto;
+      }
+    }
+
+    @include lg {
+      justify-content: flex-end;
+    }
+  }
+
+  &__mobile-whatsapp {
+    @include md {
+      display: none !important;
+    }
+  }
+}
+
+/* ── label-style zone markers on map ──────────── */
+
+.coverage-map-point {
+  background: transparent !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+}
+
+/* ── custom marker pulse animation ────────────── */
+
+.coverage-marker {
+  background: transparent !important;
+  border: none !important;
+
+  &--pulse span {
+    animation: markerPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes markerPulse {
+  0%,
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  50% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(217, 72, 65, 0.2);
   }
 }

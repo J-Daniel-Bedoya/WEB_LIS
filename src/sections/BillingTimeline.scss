@@ -1,0 +1,134 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.billing-timeline {
+  background: $color-white;
+
+  &__summary {
+    max-width: 760px;
+    margin: 0 auto $space-8;
+    padding: $space-4 $space-5;
+    border: 1px solid rgba($color-blue-deep, 0.08);
+    border-left: 4px solid $color-orange;
+    border-radius: $radius-md;
+    background: linear-gradient(180deg, rgba($color-orange, 0.05) 0%, $color-white 100%);
+
+    p {
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+      line-height: $line-height-relaxed;
+    }
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    gap: $space-4;
+    padding-left: $space-8;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      left: 15px;
+      width: 2px;
+      background: linear-gradient(
+        180deg,
+        rgba($color-orange, 0.8) 0%,
+        rgba($color-blue, 0.2) 100%
+      );
+      border-radius: $radius-full;
+    }
+
+    @include md {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-left: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    @include xl {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: $space-4;
+    min-width: 0;
+    padding: $space-5;
+    border: 1px solid rgba($color-blue-deep, 0.08);
+    border-radius: $radius-md;
+    background: $color-white;
+    box-shadow: $shadow-xs;
+
+    @include md {
+      min-height: 100%;
+    }
+  }
+
+  &__marker {
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba($color-orange, 0.2);
+    border-radius: $radius-full;
+    background: $color-orange-pale;
+    color: $color-orange;
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    @include flex-center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -31px;
+      width: 12px;
+      height: 12px;
+      transform: translateY(-50%);
+      border-radius: $radius-full;
+      background: $color-orange;
+      box-shadow: 0 0 0 4px $color-white;
+    }
+
+    @include md {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: $space-2;
+    min-width: 0;
+
+    strong {
+      color: $color-blue-deep;
+      font-size: $font-size-lg;
+      line-height: $line-height-tight;
+    }
+
+    span {
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+      line-height: $line-height-relaxed;
+    }
+  }
+
+  &__title {
+    color: $color-slate-400;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+  }
+}

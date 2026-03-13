@@ -3,80 +3,117 @@
 
 .hero {
   position: relative;
-  background: linear-gradient(180deg, rgba($color-blue-deep, 0.03) 0%, $color-white 18%, $color-white 100%);
-  padding-top: calc($space-24 + $space-6);
   overflow: hidden;
+  padding-top: calc($space-24 + $space-4);
+  background:
+    radial-gradient(circle at top left, rgba($color-blue-strong, 0.22) 0%, transparent 28%),
+    linear-gradient(180deg, #061730 0%, #0a214a 52%, #0d2e63 100%);
 
   @include md {
     padding-top: calc($space-24 + $space-8);
   }
 
-  &__bg {
+  &__backdrop {
     position: absolute;
     inset: 0;
     pointer-events: none;
   }
 
-  &__bg-grid {
+  &__backdrop-grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba($color-blue-deep, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($color-blue-deep, 0.04) 1px, transparent 1px);
-    background-size: 52px 52px;
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
     opacity: 0.08;
   }
 
-  &__bg-glow {
+  &__backdrop-glow {
     position: absolute;
-    top: -6%;
-    right: -2%;
-    width: 340px;
-    height: 340px;
-    background: radial-gradient(circle, rgba($color-orange, 0.12) 0%, transparent 72%);
     border-radius: 50%;
-  }
+    filter: blur(12px);
 
-  &__bg-wash {
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 180px;
-    background: linear-gradient(180deg, transparent 0%, rgba($color-blue-deep, 0.03) 100%);
+    &--left {
+      top: 4%;
+      left: -6%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba($color-orange, 0.32) 0%, transparent 72%);
+    }
+
+    &--right {
+      right: -8%;
+      bottom: 14%;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba($color-blue-strong, 0.28) 0%, transparent 68%);
+    }
   }
 
   &__container {
     position: relative;
+    z-index: 1;
+  }
+
+  &__surface {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    box-shadow: 0 28px 80px rgba(3, 15, 35, 0.34);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+  }
+
+  &__grid {
     display: grid;
-    gap: $space-10;
-    padding-bottom: $space-12;
+    gap: $space-8;
+    padding: $space-8 $space-5 $space-8;
+
+    @include md {
+      padding: $space-10;
+    }
 
     @include lg {
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
       gap: $space-10;
       align-items: center;
-      padding-bottom: $space-16;
+      padding: $space-10;
     }
   }
 
   &__content {
     display: flex;
+    min-width: 0;
     flex-direction: column;
-    gap: $space-6;
+    gap: $space-5;
+  }
+
+  &__badge {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: $color-white;
   }
 
   &__title {
-    color: $color-gray-900;
-    max-width: 12ch;
+    max-width: 11ch;
+    color: $color-white;
+    font-size: clamp(2.7rem, 7vw, 5.4rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
   }
 
-  &__title-highlight {
-    color: $color-orange;
+  &__title-prefix {
+    color: $color-orange-soft;
   }
 
   &__subtitle {
-    max-width: 64ch;
-    color: $color-gray-500;
-    font-size: $font-size-md;
+    max-width: 58ch;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.6;
   }
 
   &__list {
@@ -87,17 +124,19 @@
     li {
       position: relative;
       padding-left: $space-5;
-      color: $color-gray-700;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.55;
 
       &::before {
         content: '';
         position: absolute;
-        top: 11px;
+        top: 10px;
         left: 0;
         width: 7px;
         height: 7px;
         border-radius: $radius-full;
-        background: $color-orange;
+        background: $color-orange-soft;
+        box-shadow: 0 0 0 5px rgba($color-orange, 0.12);
       }
     }
   }
@@ -108,151 +147,158 @@
     gap: $space-4;
   }
 
-  &__features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-6;
-    padding-top: $space-5;
-    border-top: 1px solid rgba($color-blue-deep, 0.1);
+  &__trust {
+    display: grid;
+    gap: $space-3;
+    padding-top: $space-4;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+    @include md {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
-  &__feature {
+  &__trust-item {
     display: flex;
     align-items: center;
     gap: $space-2;
-    color: $color-gray-600;
+    min-width: 0;
+    color: rgba(255, 255, 255, 0.78);
     font-size: $font-size-sm;
 
     svg {
-      color: $color-orange;
+      flex-shrink: 0;
+      color: $color-orange-soft;
     }
   }
 
   &__visual {
-    @include below-lg {
-      display: none;
+    position: relative;
+    min-width: 0;
+  }
+
+  &__media {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 22px 54px rgba(3, 15, 35, 0.34);
+
+    @include md {
+      min-height: 420px;
+    }
+
+    @include lg {
+      min-height: 520px;
     }
   }
 
-  &__card {
-    background: $color-white;
-    border: 1px solid rgba($color-blue-deep, 0.1);
-    border-radius: $radius-md;
-    padding: $space-8;
-    box-shadow: 0 12px 36px rgba(10, 33, 74, 0.08);
-  }
-
-  &__card-header {
-    @include flex-between;
-    margin-bottom: $space-6;
-    gap: $space-4;
-  }
-
-  &__card-badge {
-    color: $color-gray-900;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
-  }
-
-  &__card-popular {
-    background: rgba($color-orange, 0.12);
-    color: $color-orange;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-semibold;
-    padding: $space-1 $space-3;
-    border-radius: $radius-sm;
-  }
-
-  &__card-speed {
-    display: flex;
-    align-items: flex-end;
-    gap: $space-3;
-    margin-bottom: $space-4;
-  }
-
-  &__card-number {
-    font-family: $font-mono;
-    font-size: 4rem;
-    line-height: 1;
-    color: $color-blue-deep;
-  }
-
-  &__card-unit {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: $space-2;
-
-    span:first-child {
-      color: $color-orange;
-      font-size: $font-size-lg;
-      font-weight: $font-weight-semibold;
-    }
-
-    span:last-child {
-      color: $color-gray-500;
-      font-size: $font-size-xs;
-    }
-  }
-
-  &__card-price {
-    margin-bottom: $space-6;
-    padding-bottom: $space-5;
-    border-bottom: 1px solid rgba($color-blue-deep, 0.08);
-  }
-
-  &__card-price--meta {
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  &__card-amount {
-    color: $color-gray-900;
-    font-size: $font-size-xl;
-    font-weight: $font-weight-semibold;
+  &__media-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10, 33, 74, 0.04) 0%, rgba(10, 33, 74, 0.28) 100%),
+      linear-gradient(135deg, rgba($color-blue-deep, 0.16) 0%, rgba($color-blue, 0.04) 45%, rgba($color-orange, 0.08) 100%);
   }
 
-  &__card-features {
+  &__floating {
+    position: absolute;
+    z-index: 1;
     display: grid;
-    gap: $space-3;
-    margin-bottom: $space-6;
+    gap: $space-2;
+    max-width: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: $radius-lg;
+    background: rgba(8, 26, 55, 0.78);
+    box-shadow: 0 20px 44px rgba(3, 15, 35, 0.32);
+    backdrop-filter: blur(10px);
 
-    li {
-      position: relative;
-      padding-left: $space-5;
-      color: $color-gray-700;
+    strong {
+      color: $color-white;
+      font-size: $font-size-base;
+      line-height: 1.25;
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.72);
       font-size: $font-size-sm;
+      line-height: 1.45;
+    }
 
-      &::before {
-        content: '\2713';
-        position: absolute;
-        left: 0;
-        color: $color-orange;
+    &--primary {
+      left: $space-4;
+      right: $space-4;
+      bottom: $space-4;
+      max-width: none;
+      padding: $space-4;
+
+      @include md {
+        right: auto;
+        bottom: $space-5;
+        max-width: 270px;
+      }
+    }
+
+    &--secondary {
+      top: $space-4;
+      right: $space-4;
+      padding: $space-4;
+
+      @include below-md {
+        display: none;
       }
     }
   }
 
+  &__floating-label {
+    color: $color-orange-soft !important;
+    font-size: $font-size-xs !important;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+  }
+
   &__stats {
     position: relative;
-    border-top: 1px solid rgba($color-blue-deep, 0.08);
-    background: $color-white;
-    padding: $space-8 0;
+    z-index: 1;
+    margin-top: -1px;
+    padding: $space-6 0 $space-10;
+
+    @include md {
+      padding: $space-8 0 $space-12;
+    }
   }
 
   &__stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-6;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-4;
 
     @include md {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
   &__stat {
+    display: grid;
+    gap: $space-2;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.96);
+    padding: $space-5;
+    box-shadow: $shadow-card;
     text-align: center;
   }
 
   &__stat-value {
-    display: block;
     color: $color-blue-deep;
     font-family: $font-mono;
     font-size: $font-size-2xl;
@@ -260,7 +306,8 @@
   }
 
   &__stat-label {
-    color: $color-gray-500;
+    color: $color-slate-500;
     font-size: $font-size-sm;
+    line-height: 1.45;
   }
 }

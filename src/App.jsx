@@ -2,9 +2,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import SiteLayout from './components/layout/SiteLayout';
 import {
   NORMATIVITY_DOCS,
-  POLICY_DOCS,
+  NORMATIVITY_CATEGORIES,
   SERVICE_QUALITY_DOCS,
   USER_INDICATOR_DOCS,
+  groupByYear,
 } from './data/legalData';
 import CompanyPage from './pages/CompanyPage';
 import ContactPage from './pages/ContactPage';
@@ -17,34 +18,8 @@ import PqrsPage from './pages/PqrsPage';
 import ServicesPage from './pages/ServicesPage';
 import SurveyPage from './pages/SurveyPage';
 
-const normativitySections = [
-  {
-    title: 'Politicas institucionales y documentos clave',
-    description: 'Contrato, politicas de datos, terminos, PQRSF y documentos institucionales de consulta.',
-    items: POLICY_DOCS,
-  },
-  {
-    title: 'Normatividad y regulacion del sector',
-    description: 'Normatividad, resoluciones, decretos y documentos sectoriales publicados por la empresa.',
-    items: NORMATIVITY_DOCS,
-  },
-];
-
-const serviceQualitySections = [
-  {
-    title: 'Historico de calidad del servicio',
-    description: 'Archivos XLS y XLSX con reportes historicos de calidad del servicio de internet fijo.',
-    items: SERVICE_QUALITY_DOCS,
-  },
-];
-
-const userIndicatorSections = [
-  {
-    title: 'Informes y certificaciones del usuario',
-    description: 'Reportes trimestrales y certificaciones de proteccion al usuario.',
-    items: USER_INDICATOR_DOCS,
-  },
-];
+const qualityYearGroups = groupByYear(SERVICE_QUALITY_DOCS);
+const indicatorYearGroups = groupByYear(USER_INDICATOR_DOCS);
 
 export default function App() {
   return (
@@ -62,14 +37,13 @@ export default function App() {
           element={
             <LegalSectionPage
               eyebrow="Normatividad"
-              title="Normatividad, politicas y documentos obligatorios"
-              description="Consulta normatividad sectorial, politicas institucionales y documentos obligatorios de la empresa."
-              summaryCards={[
-                { title: 'Documentacion vigente', text: 'Acceso directo a contratos, politicas y normatividad sectorial.' },
-                { title: 'Consulta rapida', text: 'Busqueda mas clara por grupos documentales y enlaces directos.' },
-                { title: 'Soporte institucional', text: 'Base documental para usuarios, soporte y procesos administrativos.' },
-              ]}
-              sections={normativitySections}
+              title="Normatividad, políticas y documentos obligatorios"
+              description="Consulta la regulación sectorial colombiana aplicable a servicios de telecomunicaciones e internet."
+              sectionTitle="Regulación del sector"
+              sectionDescription="Leyes, decretos, resoluciones y circulares organizadas por categoría. Usa el buscador o los filtros para encontrar un documento específico."
+              items={NORMATIVITY_DOCS}
+              searchable
+              categories={NORMATIVITY_CATEGORIES}
             />
           }
         />
@@ -78,14 +52,11 @@ export default function App() {
           element={
             <LegalSectionPage
               eyebrow="Calidad del servicio"
-              title="Historico de calidad del servicio de internet"
-              description="Consulta los reportes tecnicos e historicos de calidad del servicio de internet."
-              summaryCards={[
-                { title: 'Cobertura temporal', text: 'Reportes historicos 2021-2025 disponibles para consulta.' },
-                { title: 'Formato', text: 'Archivos XLS y XLSX listos para descarga.' },
-                { title: 'Consulta', text: 'Acceso separado dentro del centro legal.' },
-              ]}
-              sections={serviceQualitySections}
+              title="Histórico de calidad del servicio de internet"
+              description="Reportes trimestrales con indicadores de calidad del servicio de datos fijos según Resolución 6333 de la CRC."
+              sectionTitle="Reportes por año"
+              sectionDescription="Archivos XLS y XLSX con indicadores de calidad organizados por año y trimestre."
+              yearGroups={qualityYearGroups}
             />
           }
         />
@@ -94,14 +65,11 @@ export default function App() {
           element={
             <LegalSectionPage
               eyebrow="Indicadores del usuario"
-              title="Indicadores de calidad del usuario y certificaciones"
-              description="Reportes e indicadores de proteccion al usuario organizados por periodo."
-              summaryCards={[
-                { title: 'Archivos PDF', text: 'Informes y certificaciones trimestrales disponibles para descarga.' },
-                { title: 'Consulta rapida', text: 'Ubicacion por trimestre y tipo de documento.' },
-                { title: 'Proteccion al usuario', text: 'Documentacion visible dentro del centro legal.' },
-              ]}
-              sections={userIndicatorSections}
+              title="Indicadores de protección al usuario"
+              description="Informes y certificaciones trimestrales de protección al usuario organizados por periodo."
+              sectionTitle="Informes por año"
+              sectionDescription="Reportes PDF e informes de certificación organizados por año y trimestre."
+              yearGroups={indicatorYearGroups}
             />
           }
         />

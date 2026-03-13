@@ -7,10 +7,10 @@ export default function CoveragePage() {
     <>
       <PageHero
         eyebrow="Cobertura"
-        title="Cobertura por municipio y tecnologia disponible"
-        description="Consulta municipios atendidos, tecnologias disponibles y el proceso para validar tu sector."
+        title="Verifica si hay cobertura en tu zona"
+        description="Explora el mapa interactivo, detecta tu ubicación o ingresa coordenadas para saber si podemos conectarte con fibra óptica o radioenlace."
         actions={[
-          { label: 'Solicitar validacion', to: '/contacto' },
+          { label: 'Solicitar validación', to: '/contacto' },
           { label: 'Ver servicios', to: '/servicios', variant: 'outline' },
         ]}
       />
